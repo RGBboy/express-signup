@@ -1,17 +1,22 @@
 {
   "name": "express-signup",
   "version": "0.0.1",
-  "description": "User Signup for your Express Application",
+  "description": "User Signup Component for your Express Application",
   "keywords": ["Express", "Signup"],
   "author": "RGBboy <me@rgbboy.com>",
   "main": "index",
   "engines": {
     "node": "0.8.x"
   },
-  "dependencies": {},
+  "dependencies": {
+    "routable": "git://github.com/RGBboy/routable.git"
+  },
   "devDependencies": {
     "express": "3.0.x",
     "jade": "0.27.x",
+    "mongoose": "",
+    "express-flash": "git://github.com/RGBboy/express-flash.git",
+    "basic-user-model": "git://github.com/RGBboy/basic-user-model.git",
     "mocha": "1.5.x",
     "superagent": "0.9.x",
     "should": "1.2.x"
