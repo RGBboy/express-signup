@@ -60,7 +60,7 @@ Use it:
   * express-signup-test
   * express-signup-dev
 
-  The usernames and passwords for each are the same as their database names.
+The usernames and passwords for each are the same as their database names.
 
 ## Todo
 

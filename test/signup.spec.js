@@ -14,8 +14,9 @@ var app = require('../example/app'),
     request = require('superagent'),
     should = require('should');
 
-// TESTS
-// -----
+/**
+ * Tests
+ */
 
 describe.only('Sign Up', function () {
 

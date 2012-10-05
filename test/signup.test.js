@@ -1,11 +1,19 @@
 /**
+ * Express Signup Unit Tests
+ */
+
+/**
  * Module dependencies.
  */
 
 var should = require('should'),
     signup = require('../');
 
-describe('Signup', function () {
+/**
+ * Tests
+ */
+
+describe('Sign Up', function () {
 
   describe('.version', function () {
 
