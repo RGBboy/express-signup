@@ -245,7 +245,6 @@ describe.only('Sign Up', function () {
             res.text.should.include('User creation failed');
             done();
           });
-        done();
       });
 
     });
