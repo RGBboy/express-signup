@@ -69,6 +69,8 @@ The usernames and passwords for each are the same as their database names.
   * Double check that relaying the req.body.user to the signup view is 
     not a security risk.
   * Write process helpers for other components to use for integration tests.
+  * Add restrictions to routes!
+  * Make example use SSL
 
 ## License 
 
