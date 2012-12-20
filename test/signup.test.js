@@ -7,7 +7,7 @@
  */
 
 var should = require('should'),
-    signup = require('../');
+    Signup = require('../');
 
 /**
  * Tests
@@ -18,7 +18,7 @@ describe('Sign Up', function () {
   describe('.version', function () {
 
     it('should match the format x.x.x', function (done) {
-      signup.version.should.match(/^\d+\.\d+\.\d+$/);
+      Signup.version.should.match(/^\d+\.\d+\.\d+$/);
       done();
     });
 

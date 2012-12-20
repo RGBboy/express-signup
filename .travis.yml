@@ -4,4 +4,4 @@ node_js:
 services:
   - mongodb
 before_script:
-  - mongo mydb_test --eval 'db.addUser("express-signup-test", "express-signup-test");'
+  - mongo express-signup-test --eval 'db.addUser("express-signup-test", "express-signup-test");'

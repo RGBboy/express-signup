@@ -9,8 +9,8 @@
  * Module dependencies.
  */
 
-var app = require('../example/app'),
-    UserModel = require('basic-user-model'),
+var App = require('../example/app'),
+    mongoose = require('mongoose'),
     request = require('superagent'),
     should = require('should');
 
@@ -20,24 +20,30 @@ var app = require('../example/app'),
 
 describe.only('Sign Up', function () {
 
-  var user,
+  var app,
+      UserModel,
       baseURL,
       signupURL,
       server;
 
   before(function (done) {
 
-    if (!app.address) {
-      var port = 8000;
-      server = app.listen(port);
-      baseURL = 'http://localhost:' + port;
-    } else {
-      baseURL = 'http://localhost:' + app.address().port;
-    };
+    app = App();
 
-    signupURL = baseURL + '/signup';
+    app.on('ready', function () {
+      UserModel = mongoose.model('User');
+      if (!app.address) {
+        var port = 8000;
+        server = app.listen(port);
+        baseURL = 'http://localhost:' + port;
+      } else {
+        baseURL = 'http://localhost:' + app.address().port;
+      };
 
-    done();
+      signupURL = baseURL + '/signup';
+
+      done();
+    });
 
   });
 
