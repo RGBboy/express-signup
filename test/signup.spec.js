@@ -73,8 +73,7 @@ describe.only('Sign Up', function () {
 
   describe('POST /signup', function () {
 
-    var fakeUser = {},
-        mailbox;
+    var fakeUser = {};
 
     beforeEach(function (done) {
       fakeUser.email = 'TestUser@test.com'
