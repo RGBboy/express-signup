@@ -12,16 +12,37 @@
 
 ## Usage
 
-Require it:
-
 ``` javascript
-  signup = require('express-signup');
-```
+  var Signup = require('express-signup'),
+      express = require('express'),
+      mongoose = require('mongoose'),
+      app = express(),
+      namedRoutes = require('express-named-routes'),
+      attach = require('attach'),
+      shared = {
+        model: function () {
+          return mongoose.model.apply(mongoose, arguments);
+        }
+      },
+      signup = Signup(shared);
 
-Use it:
+  namedRoutes.extend(app);
+  attach.extend(app);
 
-``` javascript
-  app.use(signup('/signup', UserModel))
+  // Views
+  self.set('views', __dirname + '/views');
+  self.set('view engine', 'jade');
+  self.set('view options', { layout: false });
+
+  // Middleware
+  self.use(express.bodyParser());
+  self.use(express.cookieParser(config.cookieSecret));
+  self.use(express.session({ cookie: { maxAge: 60000 }}));
+  self.use(flash());
+
+  // Component
+  app.defineRoute('signup', '/some/url/to/signup/base');
+  app.attach('signup', signup);
 ```
 
 ## Requires
@@ -44,8 +65,12 @@ Use it:
 
 ### Other
 
-  Express Signup requires a User model to be passed in upon construction. 
-  This needs to implement the following:
+  Express Signup requires a shared object to be passed in upon construction.
+  The shared object must implement a model method for retrieving models by name.
+  Before attaching the Signup Component the model 'User' must be available
+  from shared.model('User');
+
+  The User Model needs to implement the following:
 
 #### User.register(user, function (err, user) {})
 
