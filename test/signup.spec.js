@@ -148,7 +148,7 @@ describe.only('Sign Up', function () {
           .redirects(0)
           .send({})
           .end(function (err, res) {
-            res.headers.should.have.property('location').match(new RegExp(signupURL + '$'));
+            res.headers.should.have.property('location').match(new RegExp(signupPath + '$'));
             res.statusCode.should.equal(302)
             done();
           });
