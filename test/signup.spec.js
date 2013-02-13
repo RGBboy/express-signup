@@ -18,7 +18,7 @@ var App = require('../example/app'),
  * Tests
  */
 
-describe.only('Sign Up', function () {
+describe('Sign Up', function () {
 
   var app,
       UserModel,
@@ -93,7 +93,7 @@ describe.only('Sign Up', function () {
             user: fakeUser
           })
           .end(function (err, res) {
-            res.text.should.include('User created');
+            res.text.should.include('You have successfully signed up!');
             UserModel.find({}, function(err, users) {
               users.length.should.equal(1);
               done();
@@ -129,7 +129,7 @@ describe.only('Sign Up', function () {
               })
               .end(function (err, res) {
                 res.text.should.include('<title>Sign Up</title>')
-                res.text.should.include('User creation failed');
+                res.text.should.include('Something went wrong. Please try again.');
                 UserModel.find({}, function(err, users) {
                   users.length.should.equal(1);
                   done();
@@ -160,7 +160,7 @@ describe.only('Sign Up', function () {
           .send({})
           .end(function (err, res) {
             res.text.should.include('<title>Sign Up</title>')
-            res.text.should.include('User creation failed');
+            res.text.should.include('Something went wrong. Please try again.');
             done();
           });
       });
@@ -192,7 +192,7 @@ describe.only('Sign Up', function () {
           })
           .end(function (err, res) {
             res.text.should.include('<title>Sign Up</title>')
-            res.text.should.include('User creation failed');
+            res.text.should.include('Something went wrong. Please try again.');
             done();
           });
       });
@@ -206,7 +206,7 @@ describe.only('Sign Up', function () {
           })
           .end(function (err, res) {
             res.text.should.include('<title>Sign Up</title>')
-            res.text.should.include('User creation failed');
+            res.text.should.include('Something went wrong. Please try again.');
             done();
           });
       });
@@ -220,7 +220,7 @@ describe.only('Sign Up', function () {
           })
           .end(function (err, res) {
             res.text.should.include('<title>Sign Up</title>')
-            res.text.should.include('User creation failed');
+            res.text.should.include('Something went wrong. Please try again.');
             done();
           });
       });
@@ -234,7 +234,7 @@ describe.only('Sign Up', function () {
           })
           .end(function (err, res) {
             res.text.should.include('<title>Sign Up</title>')
-            res.text.should.include('User creation failed');
+            res.text.should.include('Something went wrong. Please try again.');
             done();
           });
       });
@@ -248,7 +248,7 @@ describe.only('Sign Up', function () {
           })
           .end(function (err, res) {
             res.text.should.include('<title>Sign Up</title>')
-            res.text.should.include('User creation failed');
+            res.text.should.include('Something went wrong. Please try again.');
             done();
           });
       });
@@ -262,7 +262,7 @@ describe.only('Sign Up', function () {
           })
           .end(function (err, res) {
             res.text.should.include('<title>Sign Up</title>')
-            res.text.should.include('User creation failed');
+            res.text.should.include('Something went wrong. Please try again.');
             done();
           });
       });
@@ -276,7 +276,7 @@ describe.only('Sign Up', function () {
           })
           .end(function (err, res) {
             res.text.should.include('<title>Sign Up</title>')
-            res.text.should.include('User creation failed');
+            res.text.should.include('Something went wrong. Please try again.');
             done();
           });
       });
@@ -291,7 +291,7 @@ describe.only('Sign Up', function () {
           })
           .end(function (err, res) {
             res.text.should.include('<title>Sign Up</title>')
-            res.text.should.include('User creation failed');
+            res.text.should.include('Something went wrong. Please try again.');
             done();
           });
       });
