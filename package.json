@@ -1,6 +1,6 @@
 {
   "name": "express-signup",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "User Signup Component for your Express Application",
   "keywords": ["Express", "Signup"],
   "author": "RGBboy <me@rgbboy.com>",
