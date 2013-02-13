@@ -140,6 +140,20 @@ describe.only('Sign Up', function () {
 
     describe('when incorrect crudentials are POSTed', function () {
 
+      it('should redirect back to /signup', function (done) {
+        request.agent()
+          .post(signupURL)
+          .redirects(0)
+          .send({ 
+            user: {}
+          })
+          .end(function (err, res) {
+            res.headers.should.have.property('location').match(new RegExp(signupURL + '$'));
+            res.statusCode.should.equal(302)
+            done();
+          });
+      });
+
       it('should show an error if email is missing', function (done) {
         delete fakeUser.email;
         request
