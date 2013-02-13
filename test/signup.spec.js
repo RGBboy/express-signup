@@ -140,9 +140,36 @@ describe.only('Sign Up', function () {
 
     });
 
-    describe('when incorrect crudentials are POSTed', function () {
+    describe('when nothing is POSTed', function () {
 
       it('should redirect back to /signup', function (done) {
+        request.agent()
+          .post(signupURL)
+          .redirects(0)
+          .send({})
+          .end(function (err, res) {
+            res.headers.should.have.property('location').match(new RegExp(signupURL + '$'));
+            res.statusCode.should.equal(302)
+            done();
+          });
+      });
+
+      it('should show an error', function (done) {
+        request.agent()
+          .post(signupURL)
+          .send({})
+          .end(function (err, res) {
+            res.text.should.include('<title>Sign Up</title>')
+            res.text.should.include('User creation failed');
+            done();
+          });
+      });
+
+    });
+
+    describe('when incorrect crudentials are POSTed', function () {
+
+      it('should redirect back to signup route', function (done) {
         request.agent()
           .post(signupURL)
           .redirects(0)
