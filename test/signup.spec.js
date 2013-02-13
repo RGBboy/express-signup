@@ -24,6 +24,7 @@ describe.only('Sign Up', function () {
       UserModel,
       baseURL,
       signupURL,
+      signupPath,
       server;
 
   before(function (done) {
@@ -40,7 +41,8 @@ describe.only('Sign Up', function () {
         baseURL = 'http://localhost:' + app.address().port;
       };
 
-      signupURL = baseURL + '/signup';
+      signupPath = '/signup';
+      signupURL = baseURL + signupPath;
 
       done();
     });
@@ -148,7 +150,7 @@ describe.only('Sign Up', function () {
             user: {}
           })
           .end(function (err, res) {
-            res.headers.should.have.property('location').match(new RegExp(signupURL + '$'));
+            res.headers.should.have.property('location').match(new RegExp(signupPath + '$'));
             res.statusCode.should.equal(302)
             done();
           });
@@ -156,7 +158,7 @@ describe.only('Sign Up', function () {
 
       it('should show an error if email is missing', function (done) {
         delete fakeUser.email;
-        request
+        request.agent()
           .post(signupURL)
           .send({ 
             user: fakeUser
@@ -170,7 +172,7 @@ describe.only('Sign Up', function () {
 
       it('should show an error if email is empty', function (done) {
         fakeUser.email = '';
-        request
+        request.agent()
           .post(signupURL)
           .send({ 
             user: fakeUser
@@ -184,7 +186,7 @@ describe.only('Sign Up', function () {
 
       it('should show an error if email is invalid', function (done) {
         fakeUser.email = 'testtest.com';
-        request
+        request.agent()
           .post(signupURL)
           .send({ 
             user: fakeUser
@@ -198,7 +200,7 @@ describe.only('Sign Up', function () {
 
       it('should show an error if password is missing', function (done) {
         delete fakeUser.password;
-        request
+        request.agent()
           .post(signupURL)
           .send({ 
             user: fakeUser
@@ -212,7 +214,7 @@ describe.only('Sign Up', function () {
 
       it('should show an error if password is empty', function (done) {
         fakeUser.password = '';
-        request
+        request.agent()
           .post(signupURL)
           .send({ 
             user: fakeUser
@@ -226,7 +228,7 @@ describe.only('Sign Up', function () {
 
       it('should show an error if passwordConfirm is missing', function (done) {
         delete fakeUser.passwordConfirm;
-        request
+        request.agent()
           .post(signupURL)
           .send({ 
             user: fakeUser
@@ -240,7 +242,7 @@ describe.only('Sign Up', function () {
 
       it('should show an error if passwordConfirm is empty', function (done) {
         fakeUser.passwordConfirm = '';
-        request
+        request.agent()
           .post(signupURL)
           .send({ 
             user: fakeUser
@@ -255,7 +257,7 @@ describe.only('Sign Up', function () {
       it('should show an error if password does not match passwordConfirm', function (done) {
         fakeUser.password = 'TestPassword';
         fakeUser.passwordConfirm = 'NotTestPassword';
-        request
+        request.agent()
           .post(signupURL)
           .send({ 
             user: fakeUser
